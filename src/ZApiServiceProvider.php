@@ -3,6 +3,7 @@
 namespace NotificationChannels\ZApi;
 
 use Illuminate\Support\ServiceProvider;
+use Saade\ZApi\ZApi;
 
 class ZApiServiceProvider extends ServiceProvider
 {
@@ -11,24 +12,11 @@ class ZApiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Bootstrap code here.
-
-        /**
-         * Here's some example code we use for the pusher package.
-
-        $this->app->when(Channel::class)
-            ->needs(Pusher::class)
+        $this->app->when(ZApiChannel::class)
+            ->needs(ZApi::class)
             ->give(function () {
-                $pusherConfig = config('broadcasting.connections.pusher');
-
-                return new Pusher(
-                    $pusherConfig['key'],
-                    $pusherConfig['secret'],
-                    $pusherConfig['app_id']
-                );
+                return ZApi::instance();
             });
-         */
-
     }
 
     /**

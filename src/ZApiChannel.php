@@ -2,15 +2,13 @@
 
 namespace NotificationChannels\ZApi;
 
-use NotificationChannels\ZApi\Exceptions\CouldNotSendNotification;
 use Illuminate\Notifications\Notification;
+use Saade\ZApi\Messages\TextMessage;
+use Saade\ZApi\ZApi;
 
 class ZApiChannel
 {
-    public function __construct()
-    {
-        // Initialisation code here
-    }
+    public function __construct(protected ZApi $instance) { }
 
     /**
      * Send the given notification.
@@ -22,10 +20,14 @@ class ZApiChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        //$response = [a call to the api of your notification send]
+        if(! $channel = $notifiable->routeNotificationFor('ZApi', $notification)) {
+            return;
+        }
 
-//        if ($response->error) { // replace this by the code need to check for errors
-//            throw CouldNotSendNotification::serviceRespondedWithAnError($response);
-//        }
+        $message = TextMessage::to($channel);
+
+        return $this->instance->sendMessage(
+            $notification->toZApi($notifiable, $message)
+        );
     }
 }
