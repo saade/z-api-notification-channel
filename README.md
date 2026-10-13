@@ -8,6 +8,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/z-api.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/z-api)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/z-api/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/z-api/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/z-api.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/z-api)
+[![Plumb score](https://plumbphp.dev/badges/saade/z-api-notification-channel/composite.svg)](https://plumbphp.dev/saade/z-api-notification-channel)
 
 This package makes it easy to send notifications using [ZApi](https://z-api.io) with Laravel 10.x.
 
